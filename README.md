@@ -9,7 +9,7 @@ This is an ASP.NET MVC application created in Visual Studio which has user login
 - [Features](#features)
 
 ## Installation
-Ensure that a MySQL connection is set-up, and create an arbitrary database which will contain seperate tables for products and user credentials. The syntax for the product table is shown below:
+Ensure that a MySQL connection is set-up, and create an arbitrary database which will contain seperate tables for products and user credentials. The syntax for the 'Products' table is shown below:
 ```shell
 CREATE TABLE [dbo].[Products](
 	[ProductID] [int] NOT NULL,
