@@ -36,7 +36,7 @@ CREATE TABLE [dbo].[UserRole](
 	[RoleName] [nvarchar](50) NULL,
 )
 ```
-Insert role ID's of '1', '2' and '3' corresponding to rolename's of 'Admin', 'Manager', and 'User', and insert user credentials into the 'Users' table as desired.
+Insert role ID's of '1', '2' and '3' corresponding to rolename's of 'Admin', 'Manager', and 'User', and insert user credentials into the 'Users' table as desired. Once all tables are created, update model 'ProductsModel.edmx' from database.
 ## Features
 
 This application allows the user to login with existing credentials or register with new credentials if no account currently exists. Note that user-created accounts 
