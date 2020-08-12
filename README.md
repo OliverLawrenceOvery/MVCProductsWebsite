@@ -36,7 +36,9 @@ CREATE TABLE [dbo].[UserRole](
 	[RoleName] [nvarchar](50) NULL,
 )
 ```
-Insert role ID's of '1', '2' and '3' corresponding to rolename's of 'Admin', 'Manager', and 'User', and insert 
-
-Insert 
+Insert role ID's of '1', '2' and '3' corresponding to rolename's of 'Admin', 'Manager', and 'User', and insert user credentials into the 'Users' table as desired.
 ## Features
+
+This application allows the user to login with existing credentials or register with new credentials if no account currently exists. Note that user-created accounts 
+by default will be given the role of 'User' and as such do not have access to the list of products. You must insert a record with rolename of 'Admin' in order to view 
+the products list upon logging in.
