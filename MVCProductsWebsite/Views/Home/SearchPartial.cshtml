@@ -1,0 +1,18 @@
+﻿
+@model IEnumerable<MVCProductsWebsite.Models.ProductViewModel>
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductClass</td>
+            <td>@item.ProductModel</td>
+            <td>@item.Price</td>
+            <td>@item.Supplier</td>
+        </tr>
+    }
+}
+
+

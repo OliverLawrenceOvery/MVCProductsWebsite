@@ -1,0 +1,66 @@
+﻿@model MVCProductsWebsite.Models.ProductViewModel
+@{
+
+}
+@if (Session["RoleId"] == null)
+{
+    Response.Redirect("/Home/Login");
+}
+else
+{
+    <div class="panel panel-body" style="min-height:256px">
+
+        <div class="col-md-12">
+            <div align="center">
+                @Html.TextBoxFor(m => m.ProductClass, new { @class = "form-control", @placeholder = "Search Here by Class" })
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ProductId</th>
+                        <th>Product Class</th>
+                        <th>Product Model</th>
+                        <th>Price</th>
+                        <th>Supplier</th>
+                    </tr>
+                </thead>
+                <tbody id="productRow">
+                    @if (ViewBag.ProductList != null)
+                    {
+                        foreach (var item in ViewBag.ProductList)
+                        {
+                            <tr>
+                                <td>@item.ProductID</td>
+                                <td>@item.ProductClass</td>
+                                <td>@item.ProductModel</td>
+                                <td>@item.Price</td>
+                                <td>@item.Supplier</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#ProductClass").keydown(function () {
+                var searchText = $(this).val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/GetSearchRecord?SearchText=" + searchText,
+                    contentType: "html",
+                    success: function (response) {
+                        $("#productRow").html(response);
+                    }
+                })
+            })
+        })
+    </script>
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+

@@ -1,0 +1,70 @@
+﻿
+@model MVCProductsWebsite.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<style>
+    .input-validation-error {
+        border-color: red;
+    }
+</style>
+
+<div class="panel panel-body">
+
+    <div align="center">
+        <h4>Enter Login Details</h4>
+        <form id="myForm" class="form-horizontal">
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Username, new { @type = "text", @class = "form-control", @placeholder = "Enter Username" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @style = "color:red" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.PasswordFor(m => m.Password, new { @type = "password", @class = "form-control", @placeholder = "Enter Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @style = "color:red" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-primary" onclick="LoginUser()">Submit</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    var LoginUser = function () {
+        var data = $("#myForm").serialize();
+
+        if (!$("#myForm").valid()) { return false; }
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/LoginUser/",
+            data: data,
+            success: function (response) {
+                if (response == "fail") {
+                    window.location.href = "/Home/Login";
+                }
+                else if (response == "User") {
+                    window.location.href = "/Home/Index";
+                }
+                else {
+                    window.location.href = "/Home/Exec";
+                }
+            }
+        })
+    }
+</script>
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+
+

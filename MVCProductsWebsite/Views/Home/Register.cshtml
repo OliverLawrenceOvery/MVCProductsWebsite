@@ -1,0 +1,50 @@
+﻿@model MVCProductsWebsite.Models.RegistrationViewModel
+@{
+
+}
+
+<div class="panel panel-body">
+
+    <div align="center">
+        <h4>Registration</h4>
+
+        <form id="myForm" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-primary" onclick="RegisterUser()">Submit</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    var RegisterUser = function () {
+        var data = $("#myForm").serialize();
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/RegisterUser/",
+            data: data,
+            success: function (response) {
+
+            }
+        })
+    }
+</script>
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
